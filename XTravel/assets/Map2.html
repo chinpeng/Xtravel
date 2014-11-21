@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+		#golist {display: none;}
+		@media (max-device-width: 780px){#golist{display: block !important;}}
+	</style>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=MwBFPMB156Uy5ZSUP9uL6lSW&v=1.0"></script>  -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MwBFPMB156Uy5ZSUP9uL6lSW"></script>
+	<title>显示地图</title>
+</head>
+<body>	
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map('allmap');
+	map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}));
+	map.centerAndZoom(new BMap.Point(0, 0), 2);
+	var tileLayer = new BMap.TileLayer();
+	tileLayer.getTilesUrl = function(tileCoord, zoom) {
+		var x = tileCoord.x;
+		var y = tileCoord.y;
+		var url = 'jsguide.jpg';
+		return url;
+	}
+	map.addTileLayer(tileLayer);
+</script>
+

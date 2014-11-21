@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>评论</title>
+<link rel="stylesheet" type="text/css" href="remment.css" />
+<link rel="stylesheet" type="text/css" href="remmentlistScroll.css" />
+<link rel="stylesheet" type="text/css" href="scrollbar.css" />
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="remmentlistScroll.js"></script>
+<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript" src="remment.js"></script>
+</head>
+
+<body>
+<!--<div class="remment">
+	<div class="r_picture">		
+		<div class="r_p_img"><img  src="img.jpg"/></div>
+		<div class="r_p_name"><span>沙拉沙沙拉沙拉</span>拉</div>
+	</div>
+	<div class="r_content">
+		<div class="r_c_title">很漂亮</div>
+		<div class="r_c_comment">很漂亮 我很喜欢 很特别很漂亮 我很喜欢 很特别很漂亮 我很喜欢 很特别</div>
+		<div class="r_c_time">2014年08月入住 来自去哪网</div>		
+	</div>
+</div>
+-->
+<input type="hidden" value="" class="q_hidden"/>
+<input type="hidden" value="1" class="query_times"/>
+<input type="hidden" value="" class="sorts_hidden"/>
+<input type="hidden" value="0" class="click_times"/>
+<input type="hidden" value="0" class="scrollY"/>
+<input type="hidden" value="1" class="hasMore"/>
+<div id="wrapper">
+	<div id="scroller">
+		<div id="pullDown">
+			<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+		</div>		
+		<ul id="thelist" class="thelist">
+			
+		</ul>
+		
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel"></span>
+		</div>
+		
+	</div>
+</div>
+<div class="empty">
+	<span>暂无结果</span>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="loadRemment.js"></script>

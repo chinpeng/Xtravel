@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xtravel.views.XScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/actionbar"
+    android:fillViewport="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/activity_custom_actionbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/actionbar"
+            android:orientation="vertical" >
+
+            <com.xtravel.indicator.SlidingTabIndicator
+                android:id="@+id/booking_types"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="top"
+                android:background="#B8FFFFFF"
+                android:listSelector="#00000000"
+                android:numColumns="3" >
+            </com.xtravel.indicator.SlidingTabIndicator>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/booking_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</com.xtravel.views.XScrollView>

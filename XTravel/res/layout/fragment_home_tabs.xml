@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="0.9" >
+
+    <LinearLayout
+        android:id="@+id/quick_booking"
+        style="@style/FragmentHomeTabStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/homepage_scheduled" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book"
+            style="@style/FragmentHomeTabTextStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nearby_service"
+        style="@style/FragmentHomeTabStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/hompage_arround" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/around"
+            style="@style/FragmentHomeTabTextStyle"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scenic_tour"
+        style="@style/FragmentHomeTabStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/home_activity" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/travel"
+            style="@style/FragmentHomeTabTextStyle"/>
+    </LinearLayout>
+
+</LinearLayout>

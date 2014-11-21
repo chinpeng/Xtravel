@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+.claar{ clear:both;}
+
+.remment { width:100%; height:120px;  border:1px solid #666666;}
+.remment .r_picture { float:left; width:80px; position:relative; margin-left:10px;margin-top:10px;}
+.remment .r_picture .r_p_img{ width:100%;}
+.remment .r_picture .r_p_img img{ vertical-align:middle; height:60px; width:60px;}
+.remment .r_picture .r_p_name{ height:30px; width:100%;text-align:left; }
+.remment .r_picture .r_p_name span{ text-align:left; line-height:20px; font-size:10px;}
+
+.remment .r_content{ float:left; width:70%; margin-top:2px;}
+.remment .r_content .r_c_title{ height:25px; width:100%; vertical-align:middle;text-align:left; }
+.remment .r_content .r_c_score{ height:30px; text-align:left; line-heigth:30px;}
+.remment .r_content .r_c_title img { height:20px; width:100px;}
+.remment .r_content .r_c_comment{ margin-top:2px; height:60px; width:100%; overflow:hidden;}
+.remment .r_content .r_c_time{ margin-top:2px;width:100%;}

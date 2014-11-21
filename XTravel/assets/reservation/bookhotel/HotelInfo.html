@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="HotelInfo.css" />
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+<title>酒店信息页</title>
+</head>
+
+<body>
+	<!-- 图片滑动区 -->
+	<div class="ibox">
+		<input type="hidden" value="0" class="hiddenPageX" />
+		<div class="shownum"></div>
+		<div class="showbox"></div>
+		<!-- <span class="num"></span> -->
+	</div>
+	<div class="clear"></div>
+	<!-- 内容区 -->
+	<div class="content">
+		<div class="desc">
+			<div class="title">
+				<div class="name">详情描述</div>
+				<!-- <div class="other">
+					<span>更多</span><img src="u35.png" />
+				</div> -->
+			</div>
+			<div class="clear"></div>
+			<div class="info"></div>
+		</div>
+		<!-- <div class="tel">
+			<img src="chinaz9.png" /><span>143222344333</span>
+		</div> -->
+		<!--<div class="book">
+		<div class="br_left">
+			<li class="br_left_name"><b>成都8090酒店</b></li>
+			<li class="br_left_price">￥120</li>
+		</div>
+		<div class="br_right"><span>预定酒店</span></div>		
+	</div>-->
+
+	</div>
+
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	//全局变量
+	var len = 0;//$('.showbox>ul>li').length;//计算列表总长度(个数)
+	var $pages = 0;// Math.ceil(len / $i);//计算展示版面数量
+	var $w = 0;//取得展示区外围宽度
+	//程序入口
+	$(function() {
+		loadBookData();		
+	});
+
+	//从BaseInfo获取
+	function loadBookData() {
+		var listArray = new Array();
+		//alert(typeof(window.moreinfo.getTuanGouInfo()));
+		var data = eval("("+window.moreinfo.getTuanGouInfo()+")");
+		var image_url = [];
+		image_url[0] = data.deals[0].s_image_url
+		//alert(data.deals[0].);
+		if(data.deals[0].more_s_image_urls.length == 0 ){
+			loadImageData(image_url);		
+		}else{
+			loadImageData(data.deals[0].more_s_image_urls);			
+		}
+		
+		
+		var name = data.deals[0].title;
+		var price = data.deals[0].current_price;
+		var desc = data.deals[0].description;
+		$("div.info").empty().append(desc);
+		var busins = data.deals[0].businesses;
+		//alert(desc);
+		for(var i = 0 ; i < busins.length; i++ ){
+			listArray.push("<div class='book' ");
+			listArray.push("data=\"{name:'"+busins[i].name+"',"+"price:'"+price+"',"+"address:'"+busins[i].address +"',"+"id:'"+busins[i].id+"'," + "latitude:'"+busins[i].latitude+ "',"+"longitude:'"+busins[i].longitude +"'}\">");
+			listArray.push("</div>");
+			listArray.push("<div class='clear'></div>");
+			$("div.content").append(listArray.join(""));
+		}
+		$("div[class=book]").each(function(){
+			$(this).book('init');		
+			$(this).book('bind');
+		});	
+		//alert("0k");
+	}
+	
+	function loadImageData(img) {
+		var imageArray = new Array();
+		//var imageIndexArray = new Array();
+		imageArray.push("<ul>");
+		//imageIndexArray.push("<ol>");    	
+		//alert("image:"+data.length);
+		//var img = data.images;
+		for ( var i = 1; i <= img.length; i++) {
+			//alert("<img src='"+ECBase.albumPath+"/"+data[i-1].image+"'/>");
+			
+			imageArray.push("<li>");
+			imageArray.push("<img src='"+img[i-1]+"'/>");
+			imageArray.push("</li>");
+
+			//if( i == 1){
+			//	imageIndexArray.push("<li class='numcur'>"+i+"</li>");
+			//}else{
+			//	imageIndexArray.push("<li>"+i+"</li>");
+			//}	    		
+		}
+		imageArray.push("</ul>");
+		//imageIndexArray.push("</ol>");
+		$("div.showbox").empty().append(imageArray.join(""));
+		//$("span.num").empty().append(imageIndexArray.join(""));
+
+		//计算pages	    	    	
+		len = $('div.showbox>ul>li').length;//计算列表总长度(个数)
+		//动态获取屏幕宽度,根据此宽度设置图片位移距离
+		var $client_width = document.body.clientWidth;
+		var $client_height = document.body.clientHeight;
+
+		var $margin = Math.ceil(($client_width - 215) / 2);
+		$w = $margin + 215;
+		$('div.showbox>ul>li').css('margin-left', $margin);
+		$pages = Math.ceil(len);//计算展示版面数量    
+		//显示当前的页数
+		$('div.shownum').empty().append("1/" + len);
+
+	}
+</script>
+<script type="text/javascript" src="picture.js"></script>
+<script type="text/javascript" src="book.js"></script>

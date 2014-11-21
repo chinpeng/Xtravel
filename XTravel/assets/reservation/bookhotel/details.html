@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style>
+	*{ margin:0px; padding:0px;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+	body{font-size:0.8em;letter-spacing:1px;color:#666666;font-family:"微软雅黑"; line-height:1.8em}
+	div,ul,li,ol,img{margin:0;padding:0}
+	ul,li,ol{list-style:none}
+	.clear{ clear:both;}
+	
+	.basic-info{}
+	.basic-info .shop-name{ text-align:center;}
+	.basic-info .brief-info{ color:#999999; text-align:center;}
+	.basic-info img{ width:100%; height:150px; margin-top:5px;}
+	.detail-info{ border:1px solid #999999; margin:3px; }	
+	
+	.remment{border:1px solid #999999; margin:3px; background:color:#999999; text-align:center; height:40px; line-height:40px;}
+	
+	.cate_content{ height:30px;text-align:center; line-height: 30px;  margin-left:3px;background:#99FFFF;}
+	
+	.other{ position:relative; width:100%; margin-top:10px;}
+	.other .left{ float:left; width:50%;}
+	.other .left .where{ width:90%; height:40px; line-height:40px; text-align:center; background:#FFFF00; border:1px solid #999999;border-radius:5px; margin-left:10px; }
+	.other .right{ float:left; width:50%;}
+	.other .right .book{ width:90%; height:40px; text-align:center; line-height: 40px; background:#FFFF00; border:1px solid #999999; border-radius:5px; }
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+
+<title></title>
+</head>
+
+<body>
+<div class="basic-info">
+	<h2 class="shop-name">
+		
+	</h2>
+	<div class="image">
+		<!-- <img class="" src="QQ截图20141111150611.png"/> -->
+	</div>
+	<div class="brief-info">	    
+			<span class="item">人均</span> <span class="avg_price">98</span><span>元&nbsp;|&nbsp;</span>
+			<span class="item">口味</span> <span class ="product_score">8.4</span><span>&nbsp;|&nbsp;</span>
+			<span class="item">环境</span> <span  class= "decoration_score">8.3</span><span>&nbsp;|&nbsp;</span>
+			<span class="item">服务</span> <span class="service_score">8.2</span>
+		</div>
+		
+</div>
+
+
+<div class="detail-info">
+	<div class="address">
+		<span class="title"><b>地址：</b></span><span class="add_content">普陀区真光路1288号百联中环购物广场4楼</span>
+	</div>
+	<div class="telephone">
+		<span class="title"><b>电话：</b></span><span class="tel_content">143222344333</span>
+	</div>
+	<div class="categories">
+	</div>
+</div>
+<div class="other">
+	<div class="left">
+		<div class="where">
+			到这去
+		</div>
+	</div>
+	
+	<div class="right">
+		<div class="book">
+			预定
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="remment">
+	查看评论
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+    	loadDetailsInfo();
+    });
+    
+    function loadDetailsInfo(){
+    	var data = eval("("+window.moreinfo.getBusinessInfo()+")");
+    	$("h2.shop-name").empty().append(data.businesses[0].name);
+    	$("div.image").empty().append("<img src='"+data.businesses[0].s_photo_url+"'/>");
+    	$("span.avg_price").empty().append(data.businesses[0].avg_price);
+    	$("span.product_score").empty().append(data.businesses[0].product_score);
+    	$("span.decoration_score").empty().append(data.businesses[0].decoration_score);
+    	$("span.service_score").empty().append(data.businesses[0].service_score);
+    	$("span.add_content").empty().append(data.businesses[0].address);
+    	$("span.tel_content").empty().append(data.businesses[0].telephone);
+    	var categories = data.businesses[0].categories;
+    	var cat_array = new Array();
+    	cat_array.push("<span class='title'><b>特色：</b></span>");
+    	for(var i =0 ; i<categories.length; i++){
+    		cat_array.push("<span class='cate_content'>"+categories[i]+"</span>");
+    	}
+    	$("div.categories").empty().append(cat_array.join(""));
+    	
+    	$("div.where").bind('click',					   
+    			function(e){			
+    			 	//alert($(jq).find("input.br_link").attr("value"));
+    				var lat = data.businesses[0].latitude;
+    				var lon = data.businesses[0].longitude;
+    				var address = data.businesses[0].address
+    				window.moreinfo.jumpToMap(lat,lon,address);
+    		});		
+    	
+    	$("div.book").bind('click',					   
+    			function(e){			
+    				var bid = data.businesses[0].business_id;
+    				window.moreinfo.qrCode(""+bid);
+    		});	
+    	
+
+    	$("div.remment").bind('click',					   
+    			function(e){			
+    				var bid = data.businesses[0].business_id;
+    				window.moreinfo.jumpToComment(""+bid);
+    		});	
+    }
+</script>

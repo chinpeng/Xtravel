@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="tab_item_selected">#FF0099CC</item>
+    <item type="drawable" name="tab_item_normal">#FFF5F5F5</item>
+    <item type="drawable" name="activity_custome_actionbar_text_selected">#FF009999</item>
+</resources>

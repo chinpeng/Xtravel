@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/actionbar_bg" >
+
+    <ImageView 
+        android:id="@+id/activity_back"
+        android:layout_width="30dp"
+        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:onClick="onViewClick"
+        android:src="@drawable/activity_back"/>
+    
+    <TextView
+        android:id="@+id/activity_title"
+        style="@style/ActivityCustomeActionbarTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name" />
+
+<!--     <TextView
+        style="@style/ActivityCustomeActionbarTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:drawablePadding="5dp"
+        android:text="@string/app_name" /> -->
+
+</RelativeLayout>

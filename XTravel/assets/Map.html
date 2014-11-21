@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+		#golist {display: none;}
+		@media (max-device-width: 780px){#golist{display: block !important;}}
+	</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=MwBFPMB156Uy5ZSUP9uL6lSW&v=1.0"></script>  
+	<title>显示地图</title>
+</head>
+<body>
+	
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	
+	var poi =eval("("+window.map.getPosition()+")");
+	var sxy = eval("("+window.map.getCurrentPosition()+")");
+	var poX = poi.poX;
+	var poY = poi.poY;
+	var address = poi.address;
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");            
+	var point = new BMap.Point(poX, poY);    
+	map.centerAndZoom(point,14);                     
+	map.addControl(new BMap.ZoomControl());  //添加地图缩放控件
+	
+	
+	var opts = {
+		width : 200,    // 信息窗口宽度
+		height: 100,     // 信息窗口高度
+		title : address
+		  // 信息窗口标题
+	}
+	var infoWindow = new BMap.InfoWindow("点击图标将进入路线查", opts);  // 创建信息窗口对象
+	map.openInfoWindow(infoWindow,point); //开启信息窗口
+	
+	
+	var marker1 = new BMap.Marker(point);  // 创建标注
+	map.addOverlay(marker1);              // 将标注添加到地图中
+	marker1.addEventListener("click", function(){
+		/*start|end：（必选）
+		{name:string,latlng:Lnglat}
+		opts:
+		mode：导航模式，固定为
+		BMAP_MODE_TRANSIT、BMAP_MODE_DRIVING、
+		BMAP_MODE_WALKING、BMAP_MODE_NAVIGATION
+		分别表示公交、驾车、步行和导航，（必选）
+		region：城市名或县名  当给定region时，认为起点和终点都在同一城市，除非单独给定起点或终点的城市
+		origin_region/destination_region：同上
+		*/
+		
+		
+		var start = {
+			
+			 latlng:new BMap.Point(sxy.cPoX, sxy.cPoY)
+			// name:"四川大学"
+		}
+		var end = {
+			latlng:point,
+			name:address
+		}
+		var opts = {
+			mode:BMAP_MODE_DRIVING,
+			region:"成都"
+		}
+		var ss = new BMap.RouteSearch();
+		ss.routeCall(start,end,opts);
+	});
+	
+	/*var myIcon = new BMap.Icon("location.gif",   
+      new BMap.Size(14, 23), {      
+       // 指定定位位置。     
+       // 当标注显示在地图上时，其所指向的地理位置距离图标左上      
+       // 角各偏移7像素和25像素。您可以看到在本例中该位置即是     
+       // 图标中央下端的尖角位置。      
+       anchor: new BMap.Size(7, 25),        
+      });        
+ 	// 创建标注对象并添加到地图     
+ 	 var marker = new BMap.Marker(point, {icon: myIcon});      
+  	map.addOverlay(marker);  */    
+  
+</script>
+

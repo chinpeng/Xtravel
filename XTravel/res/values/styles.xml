@@ -1,0 +1,74 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <!-- activity标题字体 -->
+    <style name="DefTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/def_text</item>
+    </style>
+    <!-- main activity tab -->
+    <style name="ActivityMainTabStyle">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!-- main activity tab text style -->
+
+    <style name="ActivityActionbarTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/activity_actionbar_text</item>
+    </style>
+
+    <style name="ActivityCustomeActionbarTextStyle" parent="@style/ActivityActionbarTextStyle">
+        <item name="android:background">@drawable/activity_custome_actionbar_text_bg</item>
+        <item name="android:clickable">true</item>
+        <item name="android:onClick">onViewClick</item>
+    </style>
+
+    <style name="ActivityMainTabTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@drawable/activity_main_tab_text_color</item>
+    </style>
+
+    <style name="FragmentHomeTabStyle" parent="@style/ActivityMainTabStyle">
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/fragment_home_tab_bg</item>
+    </style>
+
+    <style name="FragmentHomeTabTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@drawable/fragment_home_tab_text_color</item>
+    </style>
+
+    <!-- 快捷预订选项字体 -->
+    <style name="QuickBookingItemTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/def_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">10</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="QuickBookingItemNameStyle" parent="@style/QuickBookingItemTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/def_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">10</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CustomeThemeNoTitleBar" parent="@style/AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>
