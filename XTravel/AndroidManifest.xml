@@ -52,6 +52,11 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
     <application
         android:name="com.xtravel.applications.XApplication"
@@ -83,7 +88,15 @@
         <activity android:name="com.xtravel.activities.RoutePlanDemo" />
         <activity android:name="com.xtravel.activities.LoginActivity" />
         <activity android:name="com.xtravel.activities.DetailWebviewActivity" />
-
+        <activity
+            android:name="com.xtravel.activities.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+		<activity  android:name="com.xtravel.activities.QrcodeTicketActivity">
+		</activity>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="uqS5kL8cVKWsw15EAXbvy9Wt" />

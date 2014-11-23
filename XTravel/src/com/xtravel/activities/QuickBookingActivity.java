@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xtravel.adapters.QuickBookingPagerAdapter;
@@ -20,9 +21,11 @@ import com.xtravel.others.XPageTransformer;
  * @author YouMingyang
  * 
  */
-public class QuickBookingActivity extends FragmentActivity implements XActionbar {
+public class QuickBookingActivity extends FragmentActivity implements
+		XActionbar {
 	private ViewPager bookingPager;
 	private SlidingTabIndicator bookingTypes;
+	private ImageView qrImageView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,17 @@ public class QuickBookingActivity extends FragmentActivity implements XActionbar
 	public void initView() {
 		bookingTypes = (SlidingTabIndicator) findViewById(R.id.booking_types);
 		bookingPager = (ViewPager) findViewById(R.id.booking_pager);
-		bookingPager.setAdapter(new QuickBookingPagerAdapter(getSupportFragmentManager(), getApplicationContext().getResources().getStringArray(R.array.reservations), getApplicationContext()
-				.getResources().getStringArray(R.array.categories)));
+		bookingPager.setAdapter(new QuickBookingPagerAdapter(
+				getSupportFragmentManager(), getApplicationContext()
+						.getResources().getStringArray(R.array.reservations),
+				getApplicationContext().getResources().getStringArray(
+						R.array.categories)));
 		bookingPager.setOffscreenPageLimit(2);
 		bookingPager.setPageTransformer(true, new XPageTransformer());
 		bookingTypes.setPager(bookingPager);
 	}
 
-	//设置标题栏
+	// 设置标题栏
 	public void setActivityTitle(String title) {
 		((TextView) findViewById(R.id.activity_title)).setText(title);
 	}
@@ -54,6 +60,11 @@ public class QuickBookingActivity extends FragmentActivity implements XActionbar
 		case R.id.activity_back:
 			finish();
 			break;
+		case R.id.qrcode_icon:
+			Intent intent = new Intent(this, CaptureActivity.class);
+			startActivity(intent);
+			break;
+		
 		}
 	}
 
@@ -61,4 +72,25 @@ public class QuickBookingActivity extends FragmentActivity implements XActionbar
 		super.onNewIntent(intent);
 	}
 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(qrImageView==null)
+			qrImageView = (ImageView)findViewById(R.id.qrcode_icon);		
+		qrImageView.setVisibility(View.VISIBLE);
+		qrImageView.setClickable(true);		
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if(qrImageView==null)
+			qrImageView = (ImageView)findViewById(R.id.qrcode_icon);	
+		qrImageView.setVisibility(View.GONE);
+		qrImageView.setClickable(false);
+	}
+	
+	
 }

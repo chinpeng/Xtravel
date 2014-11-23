@@ -22,7 +22,20 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:text="@string/app_name" />
-
+	
+    <ImageView 
+        android:id="@+id/qrcode_icon"
+        android:layout_width="30dp"
+        android:padding="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:onClick="onViewClick"
+        android:src="@drawable/qrcode"
+        android:visibility="gone"
+        />
 <!--     <TextView
         style="@style/ActivityCustomeActionbarTextStyle"
         android:layout_width="wrap_content"

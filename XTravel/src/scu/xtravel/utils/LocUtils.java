@@ -53,7 +53,12 @@ public class LocUtils {
 				return;
 			Log.v(TAG, location.getCity() + ":" + location.getLatitude() + ":" + location.getLongitude());
 			//大众点评的城市参数不包含'市'
-			currentCity = location.getCity().contains("市") ? location.getCity().substring(0, location.getCity().length() - 1) : location.getCity();
+			if(location.getCity()==null)
+				currentCity="成都";
+			else {
+				currentCity = location.getCity().contains("市") ? location.getCity().substring(0, location.getCity().length() - 1) : location.getCity();
+			}
+			
 			lat = location.getLatitude();
 			lon = location.getLongitude();
 			XApplication.currentLocation=new LatLng(lat, lon);

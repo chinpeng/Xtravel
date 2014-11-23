@@ -108,6 +108,10 @@ public class BussinessDetailsActivity extends XActivity {
 		@JavascriptInterface
 		public void qrCode(String id) {
 			//return loadResult;
+			Intent intent = new Intent(BussinessDetailsActivity.this, QrcodeTicketActivity.class);
+			intent.putExtra("businessId", id);
+			Log.d("businessId_detail", id);
+			startActivity(intent);
 		}
 	}
 
